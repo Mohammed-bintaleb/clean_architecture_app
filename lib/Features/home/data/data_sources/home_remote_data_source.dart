@@ -1,6 +1,5 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/api_service.dart';
-import 'package:hive/hive.dart';
 
 import '../../../../core/functions/save_books.dart';
 import '../../domain/entities/book_entity.dart';
