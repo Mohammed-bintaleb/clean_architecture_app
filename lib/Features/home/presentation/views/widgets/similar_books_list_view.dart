@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'custom_book_item.dart';
+import 'custom_book_image.dart';
 
 class SimilarBooksListview extends StatelessWidget {
   const SimilarBooksListview({super.key});
@@ -14,7 +14,9 @@ class SimilarBooksListview extends StatelessWidget {
           itemBuilder: (context, index) {
             return const Padding(
               padding: EdgeInsets.symmetric(horizontal: 5),
-              child: CustomBookImage(),
+              child: CustomBookImage(
+                image: '',
+              ),
             );
           }),
     );
