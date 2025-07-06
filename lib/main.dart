@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
-
-import 'core/functions/setup_service_locator.dart';
+import 'core/utils/functions/setup_service_locator.dart';
+import 'core/utils/simple_bloc_observer.dart';
 
 void main() async {
   setupServiceLocator();
@@ -19,6 +19,7 @@ void main() async {
   Hive.registerAdapter(BookEntityAdapter());
   await Hive.openBox<BookEntity>(kFeatureBox);
   await Hive.openBox<BookEntity>(kNewestBox);
+  Bloc.observer = SimpleBlocObserver();
   runApp(const Bookly());
 }
 
