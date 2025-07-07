@@ -18,11 +18,15 @@ class HomeRrpoImpl extends HomeRepo {
       {int pageNumber = 0}) async {
     try {
       List<BookEntity> books;
-      books = homeLocalDataSource.fetchFeatureBooks();
+      books = homeLocalDataSource.fetchFeatureBooks(
+        pageNumber: pageNumber,
+      );
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDataSource.fetchFeatureBooks();
+      books = await homeRemoteDataSource.fetchFeatureBooks(
+        pageNumber: pageNumber,
+      );
 
       return right(books);
     } catch (e) {
