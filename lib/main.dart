@@ -21,6 +21,8 @@ void main() async {
   await Hive.openBox<BookEntity>(kNewestBox);
   Bloc.observer = SimpleBlocObserver();
   runApp(const Bookly());
+  // await Hive.box<BookEntity>(kFeatureBox).clear();
+  // await Hive.box<BookEntity>(kNewestBox).clear();
 }
 
 class Bookly extends StatelessWidget {
