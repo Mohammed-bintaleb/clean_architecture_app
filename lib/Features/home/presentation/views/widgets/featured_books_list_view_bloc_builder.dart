@@ -1,6 +1,7 @@
 import 'package:bookly/Features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/utils/functions/build_error_snack_bar.dart';
 import '../../manger/featured_books_cubit/featured_books_cubit.dart';
 import 'featured_list_view.dart';
 
@@ -24,10 +25,16 @@ class _FeaturedBooksListViewBlocBuilderState
         if (state is FeaturedBooksSuccess) {
           books.addAll(state.books);
         }
+
+        if (state is FeaturedBooksPaginationFailure) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(buildErrorWidget(state.errMessage));
+        }
       },
       builder: (context, state) {
         if (state is FeaturedBooksSuccess ||
-            state is FeaturedBooksPaginationLoading) {
+            state is FeaturedBooksPaginationLoading ||
+            state is FeaturedBooksPaginationFailure) {
           return FeaturedBooksListView(
             books: books,
           );
