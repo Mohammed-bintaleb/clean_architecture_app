@@ -1,5 +1,4 @@
 import 'package:bookly/Features/home/domain/entities/book_entity.dart';
-import 'package:bookly/Features/home/presentation/views/widgets/featured_books_list_view_loding_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/functions/build_error_snack_bar.dart';
@@ -42,7 +41,7 @@ class _FeaturedBooksListViewBlocBuilderState
         } else if (state is FeaturedBooksFailure) {
           return Text(state.errMessage);
         } else {
-          return const FeaturedBooksListViewLodingIndicator();
+          return const CircularProgressIndicator();
         }
       },
     );
