@@ -3,7 +3,10 @@ import 'package:bookly/Features/home/presentation/views/widgets/book_details_vie
 import 'package:flutter/material.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key, required this.book});
+  const BookDetailsView({
+    super.key,
+    required this.book,
+  });
 
   final BookEntity book;
 
