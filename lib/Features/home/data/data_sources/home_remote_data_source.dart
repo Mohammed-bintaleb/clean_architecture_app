@@ -8,6 +8,7 @@ import '../models/book_model/book_model.dart';
 abstract class HomeRemoteDataSource {
   Future<List<BookEntity>> fetchFeatureBooks({int pageNumber = 0});
   Future<List<BookEntity>> fetchNewestBooks({int pageNumber = 0});
+  Future<List<BookEntity>> fetchSimilarBooks({int pageNumber = 0});
 }
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
@@ -33,6 +34,17 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
 
     List<BookEntity> books = getBooksList(data);
     saveBooksData(books, kNewestBox);
+    return books;
+  }
+
+  @override
+  Future<List<BookEntity>> fetchSimilarBooks({int pageNumber = 0}) async {
+    var data = await apiService.get(
+      endPoint:
+          "volumes?Filtering=free-ebooks&Sorting=newest&q=subject:computer science&startIndex=${pageNumber * 10}",
+    );
+    List<BookEntity> books = getBooksList(data);
+    saveBooksData(books, kSimilarBooksBox);
     return books;
   }
 
